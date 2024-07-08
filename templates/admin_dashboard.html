@@ -1,0 +1,88 @@
+{% extends 'home.html' %}
+
+{% block additional_styles %}
+<style>
+    /* CSS styles for the dashboard */
+    .sidebar {
+        width: 20%;
+        background-color: rgba(255, 255, 255, 0.5);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin: 0 auto;
+        margin-top: 5rem;
+        height: auto;
+    }
+
+    .sidebar h2 {
+        margin-bottom: 20px;
+    }
+
+    .tabs {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .tabs a {
+        color: #333;
+        text-decoration: none;
+        padding: 10px 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        margin-bottom: 10px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .tabs a:hover {
+        background-color: #eee;
+    }
+
+    .tabs a.active {
+        background-color: #ddd;
+    }
+
+    /* Styling for the logout link */
+    .logout-link {
+        display: block;
+        color: #fff;
+        background-color: #dc3545; /* Bootstrap's danger color */
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    .logout-link:hover {
+        background-color: #c82333; /* Darker shade of red */
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+<div class="sidebar">
+    <h2>Admin Dashboard</h2>
+    <div class="tabs">
+        <a href="{{ url_for('manage_items') }}" class="tab-link {% if request.path == url_for('manage_items') %}active{% endif %}" data-tab="manage-items">Manage Items</a>
+        <a href="{{ url_for('total_items') }}" class="tab-link {% if request.path == url_for('total_items') %}active{% endif %}" data-tab="total-items">Total Items</a>
+        <a href="{{ url_for('high_spenders') }}" class="tab-link {% if request.path == url_for('high_spenders') %}active{% endif %}" data-tab="high-spenders">High Spenders</a>
+        <a href="{{ url_for('shampoo_sales') }}" class="tab-link {% if request.path == url_for('shampoo_sales') %}active{% endif %}" data-tab="shampoo-sales">Shampoo Sales</a>
+    </div>
+    <a href="{{ url_for('logout') }}" class="logout-link">Logout</a>
+</div>
+{% endblock %}

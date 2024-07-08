@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('../img/1361708.jpeg'); /* Replace with your background image */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 120vh;
+}
+/* CSS for home.css */
+
+/* Resetting default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Navbar styles */
+.navbar {
+    /* background-color: #333; */
+    overflow: hidden;
+    width: 100%;
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.navbar a:hover {
+    background-color: #960505;
+    color: rgb(255, 255, 255);
+}
+
+/* Dropdown menu styles */
+.drop {
+    float: right;
+    overflow: hidden;
+}
+
+.drop .dropbtn {
+    font-size: 16px;  
+    border: none;
+    outline: none;
+    color: rgb(2, 0, 0);
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+    font-weight: 800;
+}
+
+.drop:hover .dropbtn {
+    background-color: #810000;
+    color: rgb(255, 255, 255);
+}
+
+/* Container styles */
+.container {
+    padding: 20px;
+    text-align: center;
+}
+
+.container h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.container p {
+    font-size: 1.2em;
+    color: #ffffff;
+}

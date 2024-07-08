@@ -1,0 +1,82 @@
+{% extends 'home.html' %}
+{%block additional_styles%}
+<style>
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+
+    .high {
+        background: #ffffff96;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-top: 100px;
+        text-align: center;
+        width: 30%;
+        margin: 40px auto;
+    }
+
+    .high a{
+        text-align: left;
+    }
+
+    input[type="submit"] {
+        width: auto;
+        padding: 10px;
+        margin-top: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background: #5cb85c;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background: #4cae4c;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    li {
+        background: #fff;
+        color: #000000;
+        font-weight: 300;
+        margin: 0 auto;
+        width: 30%;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+</style>
+{%endblock%}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>High Spenders</title>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+</head>
+<body>
+
+    <div class="high">
+    <a href="{{ url_for('dashboard') }}"><box-icon name='arrow-back'></box-icon></a>
+    <h1>High Spenders Form</h1>
+    <form method="post" action="/high_spenders">
+        <input type="submit" value="Get High Spenders">
+    </form>
+    </div>
+
+    {% if high_spenders %}
+    <ul>
+    {% for spender in high_spenders %}
+        <li>{{ spender.name | capitalize }}:  ₹{{ spender.total_amount }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+</html>
+{% endblock %}

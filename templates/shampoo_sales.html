@@ -1,0 +1,76 @@
+{% extends 'home.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shampoo Sales</title>
+    <style>
+        .shampoo {
+            width: 30%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            background: #ffffff8c;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        input[type="submit"] {
+            width: auto;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: #5cb85c;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background: #4cae4c;
+        }
+
+        .result {
+            background: #ffffff94;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .shampoovalue{
+            font-weight: 900;
+        }
+        
+    </style>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+</head>
+<body>
+    <div class="shampoo">
+        <a href="{{ url_for('dashboard') }}"><box-icon name='arrow-back'></box-icon></a>
+        <h1>Shampoo Sales Form</h1>
+        <form method="post" action="/shampoo_sales">
+            <input type="submit" value="Get Shampoo Sales">
+        </form>
+
+        {% if shampoo_sales is not none %}
+        <div class="result">
+            <h1>Shampoo Sales</h1>
+            <p>Total sales for Shampoo in the last week: <br>  <span class="shampoovalue">₹ {{ shampoo_sales }}</span></p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
+{% endblock %}

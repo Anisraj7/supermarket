@@ -1,0 +1,85 @@
+{%extends 'home.html'%}
+{%block additional_styles%}
+<style>
+    .total {
+        width: 25%;
+        margin: auto;
+        overflow: hidden;
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+        margin: 10px;
+        margin-bottom: 20px;
+    }
+
+    form {
+        background: #ffffff7e;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+        color: #333;
+    }
+    input[type="date"]{
+        background: #ffffff93;
+    }
+
+    input[type="date"],
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+        background: #5cb85c;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background: #4cae4c;
+    }
+
+    h2 {
+        text-align: center;
+        color: #000000;
+    }
+</style>
+{%endblock%}
+
+{% block content %}
+<div class="total">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+   
+    
+
+    <form method="post" action="/total_items">
+        <a href="{{ url_for('dashboard') }}"><box-icon name='arrow-back'></box-icon></a>
+        <h1>Total Items</h1>
+
+        {% if total_items is not none %}
+        <h2>{{ total_items }}</h2>
+        {% endif %}
+
+        <label for="start_date">Start Date:</label>
+        <input type="date" id="start_date" name="start_date" required><br><br>
+        
+        <label for="end_date">End Date:</label>
+        <input type="date" id="end_date" name="end_date" required><br><br>
+        
+        <input type="submit" value="Calculate">
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{%extends 'home.html'%}
+{%block content%}
+<link rel="stylesheet" href="../static/css/manage.css">
+<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+<div class="manage">
+    <a href="{{ url_for('dashboard') }}"><box-icon name='arrow-back'></box-icon></a>
+<!-- Add Item Form -->
+ <h2>Add item</h2>
+<form method="post" action="{{ url_for('manage_items') }}" class="item-form">
+    <input type="text" name="product_name" placeholder="Product Name" required><br>
+    <input type="number" name="rate" placeholder="Rate" required><br>
+    <input type="number" name="stock" placeholder="Stock" required><br>
+    <input type="hidden" name="action" value="add">
+    <input type="submit" value="Add Item">
+</form>
+
+<!-- Delete Item Form -->
+<h2>Delete Item</h2>
+<form method="post" action="{{ url_for('manage_items') }}" class="item-form">
+    <select name="product_name">
+        {% for product in products %}
+            <option value="{{ product.product_name }}">{{ product.product_name }}</option>
+        {% endfor %}
+    </select><br>
+    <input type="hidden" name="action" value="delete">
+    <input type="submit" value="Delete Item">
+</form>
+
+<!-- Update Item Form -->
+<h2>Update Item Details</h2>
+<form method="post" action="{{ url_for('manage_items') }}" class="item-form">
+    <select name="product_name">
+        {% for product in products %}
+            <option value="{{ product.product_name }}">{{ product.product_name }}</option>
+        {% endfor %}
+    </select><br>
+    <input type="number" name="rate" placeholder="New Rate" required><br>
+    <input type="number" name="stock" placeholder="New Stock" required><br>
+    <input type="hidden" name="action" value="update">
+    <input type="submit" value="Update Item">
+</form>
+
+</div>
+
+
+{%endblock%}

@@ -1,0 +1,71 @@
+/* manage.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.manage {
+    width: 50%;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff4d;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    text-align: center;
+    color: #333; /* Ensuring headings are readable */
+}
+
+.item-form {
+    margin-bottom: 20px;
+}
+
+.item-form input[type="text"],
+.item-form input[type="number"],
+.item-form input[type="submit"],
+.item-form select {
+    width: 100%; /* Full width input and select fields */
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc; /* Lighter border for form elements */
+    border-radius: 4px;
+    box-sizing: border-box; /* Ensuring padding doesn't affect width */
+}
+
+.item-form input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    /* Centering text and vertically centering button content */
+    display: block;
+    margin: 0 auto;
+}
+
+.item-form input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Styling for select dropdown */
+.item-form select {
+    /* Additional styling specific to select dropdowns */
+    appearance: none; /* Removing default styling */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" fill="%23333"><polygon points="0,0 10,0 5,10"/></svg>');
+    background-repeat: no-repeat;
+    background-position: calc(100% - 10px) center;
+    background-size: 12px;
+    cursor: pointer;
+    padding-right: 25px; /* Space for the arrow icon */
+}
+
+.item-form select::-ms-expand {
+    display: none; /* Hiding the arrow icon for IE */
+}

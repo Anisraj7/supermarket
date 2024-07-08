@@ -1,0 +1,109 @@
+{% extends 'home.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase Details</title>
+    {% block additional_styles %}
+    <style>
+        /* CSS for Purchase Details */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f063;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #017491a1;
+            color: #fff; /* White text on blue background */
+        }
+
+        tr {
+            background-color: #ffffffb0;
+        }
+
+        p {
+            text-align: center;
+            color: #777;
+        }
+
+        /* CSS for navigation link */
+        nav {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        nav a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        nav a:nth-child(2):hover {
+            background-color: red;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+    </style>
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+    <h1>Purchase Details</h1>
+    {% if purchases %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Purchase ID</th>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Rate</th>
+                    <th>Date of Purchase</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for purchase in purchases %}
+                    <tr>
+                        <td>{{ purchase.purchase_id }}</td>
+                        <td>{{ purchase.item }}</td>
+                        <td>{{ purchase.quantity }}</td>
+                        <td>{{ purchase.rate }}</td>
+                        <td>{{ purchase.date_of_purchase }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No purchases found for the current user.</p>
+    {% endif %}
+    <nav>
+        <a href="{{ url_for('purchase') }}">Record New Purchase</a>
+        <a  href="{{ url_for('logout') }}">logout</a>
+    </nav>
+    {% endblock %}
+</body>
+</html>
